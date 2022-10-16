@@ -1,0 +1,83 @@
+.sol {
+    color: blue;
+    padding:10px;
+    border:solid 1px gray;
+    margin:30px;
+    border-radius: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.scroll-wrapper{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+body{
+    max-width: 90%;
+    min-width: 600px;
+    width:90%;
+    background-color: white;
+}
+.theorem{
+    padding:20px;
+    margin: auto;
+    width: 60%;
+    min-width: 500px;
+    border:solid 1px aliceblue;
+    background-color: aliceblue;
+}
+.theorem:hover{
+    border:solid 1px black;
+}
+.theorem::before {
+  content: 'Theorem ';
+}
+.sidebar{
+    background-color: none;
+    color:white;
+    height:100vh;
+    position:fixed;
+    left: 0;
+    top:0;
+    min-width: 50px;
+    padding-right:5px;
+    transform: translate(-73px, 0);
+    transition-duration: 0.5s;
+}
+.sidebar>div{
+    opacity: 0.5;
+    border-radius: 0px 0px 10px 0px;
+    overflow: hidden;
+}
+.sidebar:hover{
+    transform: translate(0, 0);
+    transition-duration: 0.5s;
+}
+.sidebar>div>a{
+    height:auto;
+    padding:10px;
+    background-color: black;
+    display: block;
+    border:solid 0.5px;
+}
+.sidebar>div>a:hover{
+    opacity: 0.7;
+}
+.sidebar>div>a{
+    color:white;
+    text-decoration: none;
+}
+.sidebar>div>a:active{
+    background-color: hsl(0,0%,90%);
+    color:black;
+    border:solid white 1px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        max-width: 100px;
+    }
+    sol{
+        width:100%;
+    }
+}
+

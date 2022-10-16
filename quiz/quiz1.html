@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Jeffreymaomao/figure/main/fig2.ico">
+	<title>Quiz1</title>
+	<link rel="stylesheet" href="https://latex.now.sh/style.css">
+    <link after rel="stylesheet" href="style.css">
+    <script after type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script after type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']]
+      },
+      "HTML-CSS": {
+    fonts: ["Latin-Modern"]
+  }
+      });
+    </script>
+</head>
+<body style="">
+<div class="sidebar">
+    <div>
+        <a href="#Q1">Question 1</a>
+        <a href="#Q2">Question 2</a>
+        <a href="#Q3">Question 3</a>
+        <a href="#Q4">Question 4</a>
+        <a href="#Q5">Question 5</a>
+        <a href="#Q6">Question 6</a>
+    </div>
+</div>
+<!--latex new command-->
+<div style="display:none">
+  $
+    \newcommand\abs[1]{\left|#1\right|}
+    \newcommand\smaller{&#60}
+    \newcommand\bigger{&#62}
+  $
+</div>
+<!--Title-->
+<div style="text-align:center">
+    <h1>Numerical Analysis</h1>
+    <h2>Test 1 2022/10/05</h2>
+    show all your work. No credit will be given if you didn't show any step.
+    <hr>
+</div>
+<ol>
+    <!--Question 1-->
+    <li id="Q1">(12pts)
+        Use <u>3-digit chopping</u> arithmetic to perform $\cfrac{\sqrt{0.95}+\sqrt{0.9}}{\sqrt{1.1}-\sqrt{0.9}}$.<br>
+        <div class="sol">
+        sol: (Mathematical Preliminaries and Error Analysis)<br>
+        Let $fl\left(x\right)=\text{3-digits of $y$}$:
+        \[\begin{aligned}
+        fl\left(\sqrt{0.95}\right)&=0.974\color{red}{\quad\rm (2pts)}
+        \\
+            fl\left(\sqrt{0.9}\right)&=0.948\color{red}{\quad\rm (2pts)}
+        \\
+        fl\left(\sqrt{1.1}\right)&=1.04\color{red}{\quad\rm (2pts)}
+        \end{aligned}
+        \quad\Rightarrow\quad
+        \begin{aligned}
+        fl\left(0.974+0.948\right)&=1.92\color{red}{\quad\rm (2pts)}
+        \\
+        fl\left(1.04-0.948\right)&=0.092\color{red}{\quad\rm (2pts)}
+        \end{aligned}.\]
+            
+        Plugging,
+        \[
+        fl\left(\frac{fl\left(fl\left(\sqrt{0.95}\right)+fl\left(\sqrt{0.9}\right)\right)}{fl\left(fl\left(\sqrt{1.1}\right)-fl\left(\sqrt{0.9}\right)\right)}\right)=fl\left(\frac{1.92}{0.092}\right)=20.8\color{red}{\quad\rm (2pts)}
+        \]
+        </div>
+    </li>
+    <!--Question 2-->
+	<li id="Q2">(20pts)
+        Set $\displaystyle P_n(x)=\sum_{i=1}^{n}(-1)^{i+1}\frac{x^{2i-1}}{(2i-1)}$.
+        The Maclaurin series for the arctangent function converges for $-1\leq x\leq 1$ and is given by
+        \[\arctan(x)=\lim_{n\to\infty}P_n=\lim_{n\to \infty}\sum_{i=1}^{n}(-1)^{i+1}\frac{x^{2i-1}}{(2i-1)}.\]
+        Use the fact that $\tan\left(\pi/4\right)=1$ to determine the number of $n$ terms of the series that need to be summed to ensure that $\abs{4P_n(1)-\pi}\smaller 0.001 $. <br>
+        <div class="sol">
+            sol:(Algorithm and Convergence)<br>
+            Taking $x=1$,
+            \[P_n(1)=\sum_{i=1}^n\frac{(-1)^{i+1}}{(2i-1)}\color{red}{\quad\rm (2pts)}.\]
+            <span style="color:red">
+                approximation method (5pts)
+                <br>
+                process of estimating the value for $n$ (8pts)
+                <br> correct answer
+                (5pts)
+            </span><br>
+            (Algorithm and Convergence)                          
+            Taking $x=1$,
+            \[\begin{aligned}
+            P_n(1)
+            &=\sum_{i=1}^n\frac{(-1)^{i+1}}{(2i-1)}
+            \\[2ex]
+            &=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{9}+\frac{1}{11}-\frac{1}{13}+\cdots+\frac{(-1)^{n+1}}{(2n-1)}
+            \end{aligned}\]
+            Consider $n=2m$
+            \[\begin{aligned}
+            P_{2m}(1)&=\left(1+\frac{1}{5}+\frac{1}{11}+\cdots\frac{(-1)^{(2m-1)+1}}{2(2m-1)-1}\right)+\left(-\frac{1}{3}-\frac{1}{9}-\frac{1}{13}+\cdots+\frac{(-1)^{2m+1}}{2(2m)-1}\right)
+            \\[2ex]
+            &=\sum_{i=1}^m \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
+            \end{aligned}\]
+            Notice $\displaystyle\lim_{m\to \infty }4P_{2m}(1) = \pi $ is the fact. So
+            \[\begin{aligned}
+            \pi &= 4\sum_{i=1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
+            \\[2ex]
+            &= 4\sum_{i=1}^{m} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)+ 4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right),
+            \end{aligned}\]
+            where
+            \[\begin{aligned}
+            4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
+            &\leq 4\int_{m}^{\infty}\left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
+            =4\frac{1}{4}\ln\left(\frac{4i-3}{4i-1}\right)\bigg|_{m}^{\infty}
+            \\[2ex]
+            &=\ln\left(1\right)-\ln\left(\frac{4m-3}{4m-1}\right)
+            =\ln\left(\frac{4m-1}{4m-3}\right).
+            \end{aligned}\]
+            Deriving that 
+            \[\begin{aligned}
+            \pi-4P_{2m}(1)&=4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
+            \leq \ln\left(\frac{4m-1}{4m-3}\right)
+            \end{aligned}\]
+            or 
+            \[\abs{4P_n(1)-\pi} \leq \ln\left(\frac{2n-1}{2n-3}\right).\]
+            Let $\displaystyle\ln\left(\frac{2n-1}{2n-3}\right)=10^{-3}$
+             \[(2n-1)=(2n-3)e^{0.001}
+             \quad\Rightarrow\quad n = \frac{1-3e^{0.001}}{2-2e^{0.001}}\approx 1001.00008333,\]
+             $\Rightarrow$ taking $n\geq 1002$, it must have $\abs{4P_n(1)-\pi} \leq 0.001$.
+            <hr>
+            (Exact solution)<br>
+            Calculating $\abs{4P_n(1)-\pi}$
+            \[\begin{aligned}
+            & n = 100: && \abs{4P_{100}(1)-\pi}\approx 0.00999975003124
+            \\
+            & n = 200: && \abs{4P_{200}(1)-\pi}\approx 0.00499996875098
+            \\
+            & n = 500: && \abs{4P_{500}(1)-\pi}\approx 0.00199999800001
+            \\
+            & n = 1000: && \abs{4P_{1000}(1)-\pi}\approx 0.000999999749999	
+            \\
+            & n = 999:  && \abs{4P_{999}(1)-\pi}\approx 0.00100100075025
+            \end{aligned}\]
+             Solving that, for $n\geq 1000$, $\abs{4P_n(1)-\pi}\smaller 0.001$.
+        </div>
+    </li>
+    <!--Question 3-->
+	<li id="Q3">(5pts)
+        Find a sequence that converges to $0$ of order $2022$. And prove your result.
+        <br>
+        [$\textit{Hint}$: $10^{-{2^n}}$ converges to $0$ of order $2$.]
+        <br>
+        <div class="sol">
+            sol:(Algorithm and Convergence)
+            <br>
+            $\{p_n\}\to p$ of order $\alpha$ if there is an asymptotic error constant $\lambda>0$ such that 
+            \[\lim_{n\to\infty}\frac{\abs{p_{n+1}-p}}{\abs{p_n-p}^{\alpha}}=\lambda.\]
+            Let $p_n$ be $p_n=x^{-2022^n}$, where $x>0$
+            \[\lim_{n\to\infty}\frac{\left|x^{-2022^{n+1}}\ \right|}{\abs{x^{-2022^n}}^{\alpha}}
+            =\lim_{n\to\infty}\frac{\abs{x^{-2022^{n}\times2022}}}{\abs{x^{-2022^n}}^{\alpha}}\color{red}{\quad\rm (5pts)}\]
+            Taking $\alpha=2022$, the limitation become
+            \[\lim_{n\to\infty}\frac{\abs{x^{-2022^{n}\times2022}}}{\abs{x^{-2022^n}}^{2022}}
+            \lim_{n\to\infty}\frac{\abs{x^{-2022^{n}}}^{2022}}{\abs{x^{-2022^n}}^{2022}}
+            =1>0,\]
+            So for any $x>0$, the order of convergence of sequence $p_n=x^{-2022^n}$ is $2022$.
+        </div>
+    </li>
+    <!--Question 4-->
+	<li id="Q4">The root of $x^2-11x+1=0$ on $[0,1]$ is $\cfrac{11−\sqrt{117}}{2} \approx 0.091673$. Use the following methods to find a solution accurate to within $10^{-3}$ of $x^2-11x+1=0$ on $[0,1]$.
+    <ol>
+        <li> (10pts) Newton's method with $p_0=0.1$</li>
+        <li> (10pts) Secant method with $p_0=0.2$, $p_1=0.1$</li>
+    </ol>
+	<div class="sol">
+	sol:
+	<ol>
+		<li> (Newton's Method)
+            Define
+            \[\begin{aligned}
+            f(x)&=x^2-11x+1\\
+            f'(x)&=2x-11
+            \end{aligned}\]
+            then
+            \[\begin{aligned}
+            p_1=p_0-\frac{f(p_0)}{f'(p_0)}\color{red}{\quad\rm (5pts)}=0.1-\frac{-0.09}{-10.8}=0.09166\bar{6}
+            \color{red}{\quad\rm (5pts)}\\[2ex]
+            \quad\Rightarrow\quad 
+            \abs{0.09166\bar{6}-0.0916731}\smaller0.00001.
+            \end{aligned}\]
+        </li>
+        <li> (Secant method)
+            \[p_2=p_1-f(p_1)\frac{p_1-p_0}{f(p_1)-f(p_0)}\color{red}{\quad\rm (5pts)}=0.1-(-0.09)\frac{-0.1}{1.07}\approx 0.0915887850467
+            \color{red}{\quad\rm (5pts)}\]
+            \[\Rightarrow\abs{0.0915887850467-0.091673}\smaller 0.0001.\]
+        </li> 
+    </ol>
+    </div>
+    </li>
+    <!--Question 5-->
+	<li id="Q5">(10pts)
+        Suppose $p$ is a zero of multiplicity $m$ of $f$ ($m\geq2$), where the $m$-th derivative of $f$,$f^{(m)}$, is continuous on an open interval containing $p$.
+        <br>
+        Show that the function $g(x)$, defined from the fixed-point method $g(x)=x-m{f(x)}/{f'(x)}$, has $g'(p)=0$.
+        <br>
+        ($\textit{Hint: }$$p$ is a zero of multiplicity $m$ of $f$, if for $x\neq p$ we can write $f(x)=(x-p)^mq(x)$, where $\displaystyle\lim_{x\to p}q(x)=0$)
+        <br>
+        ($\textit{Hint: }$$g(x)=x-m\cfrac{f(x)}{f'(x)}=x-\cfrac{m(x-p)q(x)}{mq(x)+(x-p)q'(x)}$.)
+        <br>
+        ($\textit{Hint: }$Since $f^{(m)}$ is continuous so $q^{(m)}$ is continuous.)
+        <br>
+    <div class="sol">
+        sol:
+        <div class="scroll-wrapper">
+        \[\begin{aligned}
+        g(x)
+            &=x-m\,\frac{(x-p)^mq(x)}{\frac{d}{dx}\left((x-p)^mq(x)\right)}
+            \\[2ex]
+            &=x-m\,\frac{(x-p)^mq(x)}{m(x-p)^{m-1}q(x)+(x-p)^mq'(x)}
+            \\[2ex]
+            &=x-\frac{m(x-p)q(x)}{mq(x)+(x-p)q'(x)}
+        \\[2ex]
+        g'(x)&=1-\frac{\left(mq(x)+m(x-p)q'(x)\right)\left(mq(x)+(x-p)q'(x)\right)
+            -\left(m(x-p)q(x)\right)\left(mq'(x)+q'(x)+(x-p)q''(x)\right)}{\left(mq(x)+(x-p)q'(x)\right)^2}
+        \color{red}{\quad\rm (4pts)}
+        \end{aligned}\]
+        </div>
+        Since $f^{2}$ is continuous, so $q''$, $q'$ and $q$ are continuous. <span style="color:red">(1pts)</span>
+        <br>
+        Also $\displaystyle\lim_{x\to p}\left(mq(x)+(x-p)q'(x)\right)=mq(p)\neq 0$, since $g$ continuous $\Rightarrow\displaystyle\lim_{x\to p}q(x)=q(p)\neq 0$.
+        <br>
+        Since $g'$ is continuous
+        <div class="scroll-wrapper">
+            \[\begin{aligned}
+            g'(p)=\lim_{x\to p}g'(x)
+            &=\lim_{x\to p}1-\frac{\left(mq(x)+m(x-p)q'(x)\right)\left(mq(x)+(x-p)q'(x)\right)-\left(m(x-p)q(x)\right)\left(mq'(x)+q'(x)+(x-p)q''(x)\right)}{\left(mq(x)+(x-p)q'(x)\right)^2}
+            \\[2ex]
+            &=1-\frac{\left(mq(p)+0\right)\left(mq(p)+0\right)-\left(m\cdot 0\cdot q(p)\right)\left((m+1)q'(p)+0\right)}{\left(mq(p)+0\right)^2}
+            \\[2ex]
+            &=1-\frac{\left(mq(p)\right)^2}{\left(mq(p)\right)^2}=0\color{red}{\quad\rm (5pts)}
+            \end{aligned}\]	
+        </div>
+    </div>
+    </li>
+    <!--Fixed point Theorem-->
+    <div id="Q6" class="theorem">
+        <span style="font-weight: bold;font-style: normal;">(Fixed point Theorem)</span>
+        Let $g\in C[a,b]$ be such that $g(x)\in [a,b]$, for all $x$ in $[a,b]$. Suppose, in addition, that $g'$ exist on $(a,b)$ and that a constant $0\smaller k \smaller 1$  exist with
+        \[\abs{g'(x)\leq k},\quad\text{for all }x\in (a,b).\]
+        Then for any number $p_0$ in $[a,b]$, the sequence defined by
+        \[p_n = g(p_{n-1}),\quad n\geq 1,\]
+        converges to the unique fixed point $p$ in $[a,b]$.
+    </div>
+    <!--Question 6-->
+	<li>(43pts)
+        We will use Fixed point Theorem to find a root of the equation $x=\cfrac{5}{x^2}+3$
+        <ol>
+            <li>(1pts)
+                Setting 1. Setup a function $g(x)$ so that root of $x=\cfrac{5}{x^2}+3$ is also the fixed point of $g$ (if exists).
+                <div class="sol">
+                \[\color{blue}g(x)=\frac{5}{x^2}+3\color{red}{\quad\rm (1pts)}\]
+                </div>
+            </li>
+            <li>(1pts)
+                Setting 2. Determine an interval $[a,b]$ on which fixed-point iteration $p_{n}=g(p_{n-1}), n\geq 1$, will converge to a root of $x=\cfrac{5}{x^2}+3$.
+                <br>
+                Setup an interval $[a,b]$, so that so that $g\left([a,b]\right)\subset[a,b]$.
+                <br>
+                [$\textit{Hint: }$try some interval containing the point $3.43$]
+                <br>
+                [$\textit{Hint: }$you may try some integers around $3.43$ as the values of $a$ and $b$]
+                <div class="sol">
+                \[[a,b]=[3,4]\color{red}{\quad\rm (1pts)}\]
+                </div>
+            </li>
+            <li>PART I. Show 
+                <ol>
+                    <li>(1pts) (i) $g(x)$ is continuous on $[a,b]$.
+                        <div class="sol">
+                            For $x\neq0$ $\cfrac{5}{x^2}+3$ is continuous. And $0\notin[3,4]$, so $g(x)$ is continuous on $[3,4] \color{red}{\quad\rm (1pts)}$.
+                        </div>
+                    </li>
+                    <li>(10pts) (ii) for all $x\in [a,b]$, $g(x)\in [a,b]$.
+                        <div class="sol">
+                            For $x\bigger 0$,
+                            \[g(x)=\frac{5}{x^2}+3\bigger 0+3 \bigger 3 \color{red}{\quad\rm (5pts)},\]
+                            for $x\in [3,4]$,
+                            \[g(x)=\frac{5}{x^2}+3\smaller \frac{5}{3^2}+3 \smaller 1+4 \smaller 4\color{red}{\quad\rm (5pts)},\]
+                            so $g(x)\in [3,4]$.
+                        </div>
+                    </li>
+                    <li>(10pts)  (iii) for all $x\in [a,b]$, $\abs{g'(x)}\leq k \smaller 1$. What is your value of $k$.
+                    </li>
+                        <div class="sol">
+                            $g'(x)$ exists except $x=0$,
+                            \[g'(x)=-\frac{10}{x^3}.\]
+                            For $x>0$,
+                            \[\abs{g'(x)}=\abs{-\frac{10}{x^3}}\smaller 1\color{red}{\quad\rm (5pts)}\]
+                            Let $k=\cfrac{10}{3^3}\color{red}{\quad\rm (5pts)}$ we have
+                            \[\abs{g'(x)}\leq k \smaller 1, \quad 0\smaller k\smaller 1.\]
+                        </div>
+                </ol>
+            </li>
+            <li>PART II.
+                (10pts) Pick a starting point $p_0$ in $[a,b]$.
+                <br>
+                Perform the first <u>2 fixed point iterations</u>, $p_1$ and $p_2$.
+                <div class="sol">
+                    <span style="color:red">$p_1$ (5pts) and $p_2$ (5pts)</span>
+                    <ul>
+                        <li> Pick $p_0=3$
+                            \[\begin{aligned}
+                            p_1&=g(p_0)\approx 3.5\bar{5}\\
+                            p_2&=g(p_1)\approx 3.40
+                            \end{aligned}\]
+                        </li>
+                        <li> Pick $p_0=3.5$
+                            \[\begin{aligned}
+                            p_1&=g(p_0)\approx 3.41\\
+                            p_2&=g(p_1)\approx 3.43
+                            \end{aligned}\]
+                        </li>
+                        <li> Pick $p_0=3.5$
+                            \[\begin{aligned}
+                            p_1&=g(p_0)\approx 3.31\\
+                            p_2&=g(p_1)\approx 3.46
+                            \end{aligned}\]
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>PART II.
+                (10pts) Estimate the number of iterations $N$ necessary to obtain approximations accurate to within $10^{-5}$.
+                <br>
+                [$\textit{Hint: }$use $\abs{p_n-p}\leq k^N\max\{p_0-a,b-p_0\}$ or $\abs{p_n-p}\leq \cfrac{k^N}{1-k}\abs{p_1-p_0}$]
+            </li>
+            <div class="sol">
+                (Here pick $p_0=3.5$)
+                <br>
+                <span style="color:red">
+                    Plugging the value of $a,b$ and $k$ (2pts)<br>
+                    Correct value for $N$ (8pts)
+                </span>
+                <ul>
+                    <li>Method 1
+                        \[\abs{p_n-p}\leq k^N\max\{3.5-3,4-3.5\}\]
+                        <div class="scroll-wrapper">
+                        \[\abs{p_n-p}
+                        \leq \left(\cfrac{10}{27}\right)^N\cdot 0.5
+                        \leq 10^{-5}
+                        \quad\Rightarrow\quad
+                        N \leq \cfrac{\log\left(0.00002\right)}{\log\left(10/27\right)}\approx 10.89 \]
+                        Pick $N=11$.
+                        </div>
+                    </li>
+                    <li>Method 2
+                        \[\abs{p_n-p}\leq \cfrac{k^N}{1-k}\abs{g(3.5)-3.5}\]
+                        <div class="scroll-wrapper">
+                        \[\abs{p_n-p}\leq \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{g(3.5)-3.5}
+                        =
+                        \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{
+                            \frac{5}{3.5^3}+3-3.5}\]
+                        \[\frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\frac{9}{98}\smaller10^{-5}
+                            \quad\Rightarrow\quad
+                        N \leq 9.65295\]       
+                        </div>
+                        Pick $N=10$.
+                    </li>
+                </ul>
+                <hr>
+                (Exact solution)
+                \[p=1+\frac{1}{3}\sqrt[3]{\frac{189-81\sqrt{5}}{2}}+\sqrt[3]{\frac{7+3\sqrt{5}}{2}}\]
+                For $N=10$,
+                \[p_{10}=g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(3.5\right)\right)\right)\right)\right)\right)\right)\right)\right)\right)\]
+                the error
+                \[\left|p_{10}-p\right| \approx 6.5244083025\times10^{−8}\]
+            </div>
+        </ol>
+    </li>
+</ol>
+</body>
+
