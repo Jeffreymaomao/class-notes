@@ -4,15 +4,12 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Jeffreymaomao/figure/main/fig2.ico">
-	<meta property="og:image" content="https://raw.githubusercontent.com/Jeffreymaomao/figure/main/NA.png"/>
-	<meta name="viewport" content="width=1000"/>
-	<meta property="og:title" content="Numerical Analysis Quiz 1"/>
 	<title>Quiz1</title>
 	<link rel="stylesheet" href="https://latex.now.sh/style.css">
-    <link after rel="stylesheet" href="style.css">
+    <link defer rel="stylesheet" href="style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script after type="text/x-mathjax-config">
+    <script defer type="text/x-mathjax-config">
           MathJax.Hub.Config({
           tex2jax: {
             inlineMath: [['$','$'], ['\\(','\\)']]
@@ -22,6 +19,7 @@
       }
           });
     </script>
+    <script defer src='javascript.js'></script>
 </head>
 <body style="">
 <div class="sidebar">
@@ -43,13 +41,13 @@
   $
 </div>
 <!--Title-->
-<div style="text-align:center">
+<div id='title' style="text-align:center">
     <h1>Numerical Analysis</h1>
     <h2>Test 1 2022/10/05</h2>
     show all your work. No credit will be given if you didn't show any step.
     <hr>
 </div>
-<ol>
+<ol class="question">
     <!--Question 1-->
     <li id="Q1">(12pts)
         Use <u>3-digit chopping</u> arithmetic to perform $\cfrac{\sqrt{0.95}+\sqrt{0.9}}{\sqrt{1.1}-\sqrt{0.9}}$.<br>
@@ -383,6 +381,15 @@
         </ol>
     </li>
 </ol>
-
+<script after type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']]
+      },
+      "HTML-CSS": {
+    fonts: ["Latin-Modern"]
+  }
+      });
+    </script>
 </body>
 

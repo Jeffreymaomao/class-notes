@@ -1,3 +1,9 @@
+.question{
+    
+}
+.question>li:nth-child(n):hover{
+    
+}
 .sol {
     color: blue;
     padding:10px;
@@ -10,12 +16,6 @@
 .scroll-wrapper{
     overflow-x: auto;
     overflow-y: hidden;
-}
-body{
-    max-width: 90%;
-    min-width: 600px;
-    width:90%;
-    background-color: white;
 }
 .theorem{
     padding:20px;
@@ -34,14 +34,14 @@ body{
 .sidebar{
     background-color: none;
     color:white;
-    height:100vh;
+    height:100%;
     position:fixed;
     left: 0;
     top:0;
-    min-width: 50px;
-    padding-right:5px;
-    transform: translate(-73px, 0);
+    padding-right:0px;
+    transform: translate(-81px, 0);
     transition-duration: 0.5s;
+    overflow-y: auto;
 }
 .sidebar>div{
     opacity: 0.5;
@@ -54,7 +54,7 @@ body{
 }
 .sidebar>div>a{
     height:auto;
-    padding:10px;
+    padding:10px 20px 10px 15px;
     background-color: black;
     display: block;
     border:solid 0.5px;
@@ -69,15 +69,45 @@ body{
 .sidebar>div>a:active{
     background-color: hsl(0,0%,90%);
     color:black;
-    border:solid white 1px;
 }
 
+body{
+    margin:0;
+    padding:100px 50px;/*(top button) (left right)*/
+    max-width: 100%;
+/*    min-width: 600px;*/
+    background-color: white;
+    font-size:1.0rem;
+}
+footer {
+    margin-top: 50px;
+    margin-left:-50px;
+    margin-bottom: -100px;
+    padding:50px;
+    width:100vw;
+    text-align: center;
+    background-color: DarkSalmon;
+    color: white;
+}
+.question>li{
+/*    min-height:600px;*/
+}
 @media only screen and (max-width: 600px) {
     body {
-        max-width: 100px;
+        padding:0;/*(top button) (left right)*/  
+    }
+    footer{
+        margin-left:0px;
     }
     sol{
         width:100%;
     }
+    .MathJax { 
+    font-size: 1.3em !important; 
+    }
+    .sidebar{
+        display: none;
+    }
+    
 }
 
