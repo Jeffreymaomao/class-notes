@@ -8,7 +8,7 @@ window.addEventListener('scroll', (event) => {
     var H = window.innerHeight;
     for (var i = 0; i < L.length; i++){
         y1 = L[i].getBoundingClientRect().top;
-        y2 = L[i].getBoundingClientRect().button;
+        y2 = L[i].getBoundingClientRect().bottom;
         check = (y1>0 & y1<H) | (y2>0 & y2<H) | (y1<0 & y2>H)
         if(check){
             N[i].style.backgroundColor = 'red';
