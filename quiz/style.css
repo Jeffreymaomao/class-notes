@@ -73,7 +73,7 @@
 }
 
 body{
-    font-family: 'Latin Modern',cwTeXKai, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-family: 'Latin Modern',cwTeXKai,標楷體, Georgia, Cambria, 'Times New Roman', Times, serif;
     margin:0;
     padding:100px 50px;/*(top button) (left right)*/
     max-width: 100%;
@@ -118,24 +118,33 @@ footer {
     body {
         padding:0;/*(top button) (left right)*/  
     }
+    .question{
+        padding-left:30px;
+        padding-right: 10px;
+        overflow: scroll;
+        width:100vw;
+    }
     footer{
         margin-left:0px;
     }
-    sol{
+    .sol{
         width:100%;
+        margin-left: 0px;
     }
     .MathJax { 
-    font-size: 1.2em !important; 
+    font-size: 1em !important; 
     }
     .sidebar{
         display: none;
     }
-    
     h1{
         margin: 0px;
-        margin-top: 50px;
+        margin-top: 10px;
+        font-size:30px;
     }
     h2{
+        margin:0;
+        font-size:20px;
         margin-top: 0px;
     }
     .theorem{
@@ -143,5 +152,6 @@ footer {
         min-width: auto;
         max-width: 100wh;
     }
+    
 }
 

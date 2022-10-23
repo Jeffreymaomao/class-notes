@@ -200,7 +200,6 @@
         <br>
     <div class="sol">
         sol:
-        <div class="scroll-wrapper">
         \[\begin{aligned}
         g(x)
             &=x-m\,\frac{(x-p)^mq(x)}{\frac{d}{dx}\left((x-p)^mq(x)\right)}
@@ -212,13 +211,11 @@
             -\left(m(x-p)q(x)\right)\left(mq'(x)+q'(x)+(x-p)q''(x)\right)}{\left(mq(x)+(x-p)q'(x)\right)^2}
         \color{red}{\quad\rm (4pts)}
         \end{aligned}\]
-        </div>
         Since $f^{2}$ is continuous, so $q''$, $q'$ and $q$ are continuous. <span style="color:red">(1pts)</span>
         <br>
         Also since $q$ continuous, $\displaystyle\lim_{x\to p}q(x)=q(p)\neq 0.$
         \[\displaystyle\lim_{x\to p}\left(mq(x)+(x-p)q'(x)\right)=mq(p)\neq 0.\color{red}{\quad\rm (1pts)}\]
         Since $g'$ is continuous
-        <div class="scroll-wrapper">
             \[\begin{aligned}
             g'(p)=\lim_{x\to p}g'(x)
             &=\lim_{x\to p}1-\frac{\left(mq(x)+m(x-p)q'(x)\right)\left(mq(x)+(x-p)q'(x)\right)-\left(m(x-p)q(x)\right)\left(mq'(x)+q'(x)+(x-p)q''(x)\right)}{\left(mq(x)+(x-p)q'(x)\right)^2}
@@ -226,8 +223,7 @@
             &=1-\frac{\left(mq(p)+0\right)\left(mq(p)+0\right)-\left(m\cdot 0\cdot q(p)\right)\left((m+1)q'(p)+0\right)}{\left(mq(p)+0\right)^2}
             \\[2ex]
             &=1-\frac{\left(mq(p)\right)^2}{\left(mq(p)\right)^2}=0\color{red}{\quad\rm (5pts)}
-            \end{aligned}\]	
-        </div>
+            \end{aligned}\]
     </div>
     </li>
     <!--Fixed point Theorem-->
@@ -352,26 +348,22 @@
                 <ul>
                     <li>Method 1
                         \[\abs{p_n-p}\leq k^N\max\{3.5-3,4-3.5\}\]
-                        <div class="scroll-wrapper">
                         \[\abs{p_n-p}
                         \leq \left(\cfrac{10}{27}\right)^N\cdot 0.5
                         \leq 10^{-5}
                         \quad\Rightarrow\quad
                         N \geq \cfrac{\log\left(0.00002\right)}{\log\left(10/27\right)}\approx 10.89 \]
                         Pick $N=11$.
-                        </div>
                     </li>
                     <li>Method 2
                         \[\abs{p_n-p}\leq \cfrac{k^N}{1-k}\abs{g(3.5)-3.5}\]
-                        <div class="scroll-wrapper">
                         \[\abs{p_n-p}\leq \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{g(3.5)-3.5}
                         =
                         \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{
                             \frac{5}{3.5^3}+3-3.5}\]
                         \[\frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\frac{9}{98}\smaller10^{-5}
                             \quad\Rightarrow\quad
-                        N \geq 9.65295\]       
-                        </div>
+                        N \geq 9.65295\]
                         Pick $N=10$.
                     </li>
                 </ul>
