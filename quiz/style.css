@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'cwTeXKai';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/ea/cwtexkai/v3/cwTeXKai-zhonly.eot);
+  src: url(//fonts.gstatic.com/ea/cwtexkai/v3/cwTeXKai-zhonly.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/cwtexkai/v3/cwTeXKai-zhonly.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/cwtexkai/v3/cwTeXKai-zhonly.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/cwtexkai/v3/cwTeXKai-zhonly.ttf) format('truetype');
+}
 .question{
     
 }
@@ -72,7 +82,7 @@
 }
 
 body{
-    font-family: 'Latin Modern',DFKai-sb, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-family: 'Latin Modern',cwTeXKai, Georgia, Cambria, 'Times New Roman', Times, serif;
     margin:0;
     padding:100px 50px;/*(top button) (left right)*/
     max-width: 100%;
