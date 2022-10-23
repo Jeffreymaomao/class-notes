@@ -12,6 +12,7 @@ window.addEventListener('scroll', (event) => {
         check = (y1>0 & y1<H) | (y1<0 & y2>H)
         if(check){
             N[i].style.backgroundColor = 'red';
+            //break
         }else{
             N[i].style.backgroundColor = 'black';
         }

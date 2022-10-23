@@ -72,6 +72,7 @@
 }
 
 body{
+    font-family: 'Latin Modern',標楷體, Georgia, Cambria, 'Times New Roman', Times, serif;
     margin:0;
     padding:100px 50px;/*(top button) (left right)*/
     max-width: 100%;
@@ -79,6 +80,7 @@ body{
     background-color: white;
     font-size:1.0rem;
 }
+
 footer {
     margin-top: 50px;
     margin-left:-50px;
@@ -89,8 +91,27 @@ footer {
     background-color: DarkSalmon;
     color: white;
 }
+
+#title{
+    height:auto;
+}
+.question{
+/*
+    margin:0;
+    padding:0;
+    scroll-snap-points-y: repeat(100%);
+    scroll-snap-type: y mandatory;
+    background-color: antiquewhite;
+*/
+    overflow-y: scroll;
+    height: 100%;
+}
 .question>li{
-/*    min-height:600px;*/
+/*
+    min-height:100vh;
+    scroll-snap-align: center;
+*/
+    
 }
 @media only screen and (max-width: 600px) {
     body {
@@ -103,11 +124,23 @@ footer {
         width:100%;
     }
     .MathJax { 
-    font-size: 1.3em !important; 
+    font-size: 1.2em !important; 
     }
     .sidebar{
         display: none;
     }
     
+    h1{
+        margin: 0px;
+        margin-top: 50px;
+    }
+    h2{
+        margin-top: 0px;
+    }
+    .theorem{
+        width: 90%;
+        min-width: auto;
+        max-width: 100wh;
+    }
 }
 

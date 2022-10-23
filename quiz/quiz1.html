@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://latex.now.sh/style.css">
     <link defer rel="stylesheet" href="style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script defer id="mathjax" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js"></script>
     <script defer type="text/x-mathjax-config">
           MathJax.Hub.Config({
           tex2jax: {
@@ -38,6 +38,8 @@
     \newcommand\abs[1]{\left|#1\right|}
     \newcommand\smaller{&#60}
     \newcommand\bigger{&#62}
+    \newcommand\and{\quad\text{and}\quad}
+    \newcommand\or{\quad\text{or}\quad}
   $
 </div>
 <!--Title-->
@@ -83,69 +85,39 @@
         <div class="sol">
             sol:(Algorithm and Convergence)<br>
             Taking $x=1$,
-            \[P_n(1)=\sum_{i=1}^n\frac{(-1)^{i+1}}{(2i-1)}\color{red}{\quad\rm (2pts)}.\]
+            \[P_n(1)=\sum_{i=1}^n\frac{(-1)^{i+1}}{(2i-1)}.\]
+            Let 
+            \[a_i = \frac{(-1)^{i+1}}{(2i-1)},\]
+            we have
+            \[\abs{a_{i}}\geq \abs{a_{i+1}}, \forall i=1,2,\ldots,n
+            \and
+            \displaystyle\lim_{i\to \infty}a_i = 0.\]
+            By Alternative series test, the partial sum $4P_n$ approximates $\pi$ with error bounded by
+            \[\begin{aligned}
+            \abs{4P_n-\pi} 
+            & \leq \abs{4P_{n} - 4P_{n+1}}  = \abs{4a_{n}} = \frac{4}{2(n+1)-1} = \frac{4}{2n+1}
+            \end{aligned}\]
+            When $n\geq 2000$
+            \[\frac{4}{2n+1}\leq \frac{4}{4001} \smaller \frac{4}{4000} = 0.001.\]
+            Hense, for $n\geq 2000$
+            \[\abs{4P_{n} - \pi} \leq \frac{4}{2n+1} \smaller 0.001.\]
+            <br>
             <span style="color:red">
-                approximation method (5pts)
+                ( 如果直接求解 $n=10,20$ 的 2 分 )
                 <br>
-                process of estimating the value for $n$ (8pts)
-                <br> correct answer
-                (5pts)
-            </span><br>
-            (Algorithm and Convergence)                          
-            Taking $x=1$,
-            \[\begin{aligned}
-            P_n(1)
-            &=\sum_{i=1}^n\frac{(-1)^{i+1}}{(2i-1)}
-            \\[2ex]
-            &=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{9}+\frac{1}{11}-\frac{1}{13}+\cdots+\frac{(-1)^{n+1}}{(2n-1)}
-            \end{aligned}\]
-            Consider $n=2m$
-            \[\begin{aligned}
-            P_{2m}(1)&=\left(1+\frac{1}{5}+\frac{1}{11}+\cdots\frac{(-1)^{(2m-1)+1}}{2(2m-1)-1}\right)+\left(-\frac{1}{3}-\frac{1}{9}-\frac{1}{13}+\cdots+\frac{(-1)^{2m+1}}{2(2m)-1}\right)
-            \\[2ex]
-            &=\sum_{i=1}^m \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
-            \end{aligned}\]
-            Notice $\displaystyle\lim_{m\to \infty }4P_{2m}(1) = \pi $ is the fact. So
-            \[\begin{aligned}
-            \pi &= 4\sum_{i=1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
-            \\[2ex]
-            &= 4\sum_{i=1}^{m} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)+ 4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right),
-            \end{aligned}\]
-            where
-            \[\begin{aligned}
-            4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
-            &\leq 4\int_{m}^{\infty}\left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
-            =4\frac{1}{4}\ln\left(\frac{4i-3}{4i-1}\right)\bigg|_{m}^{\infty}
-            \\[2ex]
-            &=\ln\left(1\right)-\ln\left(\frac{4m-3}{4m-1}\right)
-            =\ln\left(\frac{4m-1}{4m-3}\right).
-            \end{aligned}\]
-            Deriving that 
-            \[\begin{aligned}
-            \pi-4P_{2m}(1)&=4\sum_{i=m+1}^{\infty} \left(\frac{1}{4i-3}-\frac{1}{4i-1}\right)
-            \leq \ln\left(\frac{4m-1}{4m-3}\right)
-            \end{aligned}\]
-            or 
-            \[\abs{4P_n(1)-\pi} \leq \ln\left(\frac{2n-1}{2n-3}\right).\]
-            Let $\displaystyle\ln\left(\frac{2n-1}{2n-3}\right)=10^{-3}$
-             \[(2n-1)=(2n-3)e^{0.001}
-             \quad\Rightarrow\quad n = \frac{1-3e^{0.001}}{2-2e^{0.001}}\approx 1001.00008333,\]
-             $\Rightarrow$ taking $n\geq 1002$, it must have $\abs{4P_n(1)-\pi} \leq 0.001$.
-            <hr>
-            (Exact solution)<br>
-            Calculating $\abs{4P_n(1)-\pi}$
-            \[\begin{aligned}
-            & n = 100: && \abs{4P_{100}(1)-\pi}\approx 0.00999975003124
-            \\
-            & n = 200: && \abs{4P_{200}(1)-\pi}\approx 0.00499996875098
-            \\
-            & n = 500: && \abs{4P_{500}(1)-\pi}\approx 0.00199999800001
-            \\
-            & n = 1000: && \abs{4P_{1000}(1)-\pi}\approx 0.000999999749999	
-            \\
-            & n = 999:  && \abs{4P_{999}(1)-\pi}\approx 0.00100100075025
-            \end{aligned}\]
-             Solving that, for $n\geq 1000$, $\abs{4P_n(1)-\pi}\smaller 0.001$.
+                將$x=1$帶入寫出$P_n(1)$的 2 分
+                <br>
+                寫出估計無窮級數方法的 5 分
+                <br>
+                計算過程 8 分
+                <br>
+                寫出能夠使$\abs{4P_{n} - \pi}\smaller 0.001$ 的 5 分
+            </span>
+            
+            
+            
+            
+            
         </div>
     </li>
     <!--Question 3-->
@@ -159,14 +131,21 @@
             <br>
             $\{p_n\}\to p$ of order $\alpha$ if there is an asymptotic error constant $\lambda>0$ such that 
             \[\lim_{n\to\infty}\frac{\abs{p_{n+1}-p}}{\abs{p_n-p}^{\alpha}}=\lambda.\]
-            Let $p_n$ be $p_n=x^{-2022^n}$, where $x>0$
-            \[\lim_{n\to\infty}\frac{\left|x^{-2022^{n+1}}\ \right|}{\abs{x^{-2022^n}}^{\alpha}}
-            =\lim_{n\to\infty}\frac{\abs{x^{-2022^{n}\times2022}}}{\abs{x^{-2022^n}}^{\alpha}}\color{red}{\quad\rm (5pts)}\]
+            Let $p_n$ be $p_n=a^{-2022^n}$, where constant $a>0$
+            \[\lim_{n\to\infty}\frac{\left|a^{-2022^{n+1}}\ \right|}{\abs{a^{-2022^n}}^{\alpha}}
+            =\lim_{n\to\infty}\frac{\abs{a^{-2022^{n}\times2022}}}{\abs{a^{-2022^n}}^{\alpha}}\color{red}{\quad\rm (5pts)}\]
             Taking $\alpha=2022$, the limitation become
-            \[\lim_{n\to\infty}\frac{\abs{x^{-2022^{n}\times2022}}}{\abs{x^{-2022^n}}^{2022}}
-            \lim_{n\to\infty}\frac{\abs{x^{-2022^{n}}}^{2022}}{\abs{x^{-2022^n}}^{2022}}
+            \[\lim_{n\to\infty}\frac{\abs{a^{-2022^{n}\times2022}}}{\abs{a^{-2022^n}}^{2022}}
+            \lim_{n\to\infty}\frac{\abs{a^{-2022^{n}}}^{2022}}{\abs{a^{-2022^n}}^{2022}}
             =1>0,\]
-            So for any $x>0$, the order of convergence of sequence $p_n=x^{-2022^n}$ is $2022$.
+            So for any constant $a>0$, the order of convergence of sequence $p_n=a^{-2022^n}$ is $2022$.<br>
+            <span style="color:red">
+                找到可行的$p_n$ 1 分
+                <br>
+                寫出convergence order 的定義 1 分
+                <br>
+                計算 3 分
+            </span>
         </div>
     </li>
     <!--Question 4-->
@@ -186,31 +165,38 @@
             \end{aligned}\]
             then
             \[\begin{aligned}
-            p_1=p_0-\frac{f(p_0)}{f'(p_0)}\color{red}{\quad\rm (5pts)}=0.1-\frac{-0.09}{-10.8}=0.09166\bar{6}
-            \color{red}{\quad\rm (5pts)}\\[2ex]
+            p_1=p_0-\frac{f(p_0)}{f'(p_0)}=0.1-\frac{-0.09}{-10.8}=0.09166\bar{6}
+            \\[2ex]
             \quad\Rightarrow\quad 
             \abs{0.09166\bar{6}-0.0916731}\smaller0.00001.
             \end{aligned}\]
         </li>
         <li> (Secant method)
-            \[p_2=p_1-f(p_1)\frac{p_1-p_0}{f(p_1)-f(p_0)}\color{red}{\quad\rm (5pts)}=0.1-(-0.09)\frac{-0.1}{1.07}\approx 0.0915887850467
-            \color{red}{\quad\rm (5pts)}\]
+            \[p_2=p_1-f(p_1)\frac{p_1-p_0}{f(p_1)-f(p_0)}=0.1-(-0.09)\frac{-0.1}{1.07}\approx 0.0915887850467\]
             \[\Rightarrow\abs{0.0915887850467-0.091673}\smaller 0.0001.\]
+            
         </li> 
+        <span style="color:red">
+            寫出牛頓法 / 割線法公式 2 分
+            <br>
+            計算$p_n$ 6 分
+            <br>
+            核對誤差 2 分
+        </span>
     </ol>
     </div>
     </li>
     <!--Question 5-->
 	<li id="Q5">(10pts)
-        Suppose $p$ is a zero of multiplicity $m$ of $f$ ($m\geq2$), where the $m$-th derivative of $f$,$f^{(m)}$, is continuous on an open interval containing $p$.
+          of $f$ ($m\geq2$), where the $m$-th derivative of $f$,$f^{(m)}$, is continuous on an open interval containing $p$.
         <br>
         Show that the function $g(x)$, defined from the fixed-point method $g(x)=x-m{f(x)}/{f'(x)}$, has $g'(p)=0$.
-        <br>
-        ($\textit{Hint: }$$p$ is a zero of multiplicity $m$ of $f$, if for $x\neq p$ we can write $f(x)=(x-p)^mq(x)$, where $\displaystyle\lim_{x\to p}q(x)=0$)
+        <br> <br>
+        ($\textit{Hint: }$$p$ is a zero of multiplicity $m$ of $f$, if for $x\neq p$ we can write $f(x)=(x-p)^mq(x)$, where $\displaystyle\lim_{x\to p}q(x)\neq 0$)
         <br>
         ($\textit{Hint: }$$g(x)=x-m\cfrac{f(x)}{f'(x)}=x-\cfrac{m(x-p)q(x)}{mq(x)+(x-p)q'(x)}$.)
         <br>
-        ($\textit{Hint: }$Since $f^{(m)}$ is continuous so $q^{(m)}$ is continuous.)
+        ($\textit{Hint: }$Since $f^{(m)}$ is continuous, so $q^{(m)}$ is continuous.)
         <br>
     <div class="sol">
         sol:
@@ -218,8 +204,7 @@
         \[\begin{aligned}
         g(x)
             &=x-m\,\frac{(x-p)^mq(x)}{\frac{d}{dx}\left((x-p)^mq(x)\right)}
-            \\[2ex]
-            &=x-m\,\frac{(x-p)^mq(x)}{m(x-p)^{m-1}q(x)+(x-p)^mq'(x)}
+            =x-m\,\frac{(x-p)^mq(x)}{m(x-p)^{m-1}q(x)+(x-p)^mq'(x)}
             \\[2ex]
             &=x-\frac{m(x-p)q(x)}{mq(x)+(x-p)q'(x)}
         \\[2ex]
@@ -228,10 +213,10 @@
         \color{red}{\quad\rm (4pts)}
         \end{aligned}\]
         </div>
-        Since $f^{(2)}$ is continuous, so $q''$, $q'$ and $q$ are continuous. <span style="color:red">(1pts)</span>
+        Since $f^{2}$ is continuous, so $q''$, $q'$ and $q$ are continuous. <span style="color:red">(1pts)</span>
         <br>
-        Also $\displaystyle\lim_{x\to p}\left(mq(x)+(x-p)q'(x)\right)=mq(p)\neq 0$, since $g$ continuous $\Rightarrow\displaystyle\lim_{x\to p}q(x)=q(p)\neq 0$.
-        <br>
+        Also since $q$ continuous, $\displaystyle\lim_{x\to p}q(x)=q(p)\neq 0.$
+        \[\displaystyle\lim_{x\to p}\left(mq(x)+(x-p)q'(x)\right)=mq(p)\neq 0.\color{red}{\quad\rm (1pts)}\]
         Since $g'$ is continuous
         <div class="scroll-wrapper">
             \[\begin{aligned}
@@ -255,14 +240,21 @@
         converges to the unique fixed point $p$ in $[a,b]$.
     </div>
     <!--Question 6-->
-	<br><br>
 	<li>(43pts)
         We will use Fixed point Theorem to find a root of the equation $x=\cfrac{5}{x^2}+3$
         <ol>
             <li>(1pts)
                 Setting 1. Setup a function $g(x)$ so that root of $x=\cfrac{5}{x^2}+3$ is also the fixed point of $g$ (if exists).
                 <div class="sol">
-                \[\color{blue}g(x)=\frac{5}{x^2}+3\color{red}{\quad\rm (1pts)}\]
+                \[\color{blue}g(x)=\frac{5}{x^2}+3
+                    \or
+                    g(x)=\frac{3x^{3}+15x}{x^{3}+10}, x>0
+                    \or 
+                    \cdots 
+                    \color{red}{\quad\rm (1pts)}\]
+                <span style="color:red;">
+                    任何$g(x)$，使得$x=g(x)$的根與$x=5/x^2+3$相同，這裡用$g(x)=5/x^2+3$。
+                </span>
                 </div>
             </li>
             <li>(1pts)
@@ -274,7 +266,15 @@
                 <br>
                 [$\textit{Hint: }$you may try some integers around $3.43$ as the values of $a$ and $b$]
                 <div class="sol">
-                \[[a,b]=[3,4]\color{red}{\quad\rm (1pts)}\]
+                \[[a,b]=[3,4]
+                    \or
+                    [a,b]=[3.4,3.5]
+                    \or 
+                    \cdots
+                    \color{red}{\quad\rm (1pts)}\]
+                <span style="color:red;">
+                    任何$[a,b]$，使得$g\left([a,b]\right)\subset[a,b]$，這裡用$[3,4]$。
+                </span>
                 </div>
             </li>
             <li>PART I. Show 
@@ -299,7 +299,11 @@
                             $g'(x)$ exists except $x=0$,
                             \[g'(x)=-\frac{10}{x^3}.\]
                             For $x>0$,
-                            \[\abs{g'(x)}=\abs{-\frac{10}{x^3}}\smaller 1\color{red}{\quad\rm (5pts)}\]
+                            \[\abs{g'(x)}
+                            =\abs{\frac{10}{x^3}}
+                            \leq
+                            \abs{\frac{10}{3^3}}
+                            \smaller 1\color{red}{\quad\rm (5pts)}\]
                             Let $k=\cfrac{10}{3^3}\color{red}{\quad\rm (5pts)}$ we have
                             \[\abs{g'(x)}\leq k \smaller 1, \quad 0\smaller k\smaller 1.\]
                         </div>
@@ -318,13 +322,13 @@
                             p_2&=g(p_1)\approx 3.40
                             \end{aligned}\]
                         </li>
-                        <li> Pick $p_0=3.5$
+                        <li> or pick $p_0=3.5$
                             \[\begin{aligned}
                             p_1&=g(p_0)\approx 3.41\\
                             p_2&=g(p_1)\approx 3.43
                             \end{aligned}\]
                         </li>
-                        <li> Pick $p_0=3.5$
+                        <li> or pick $p_0=4$
                             \[\begin{aligned}
                             p_1&=g(p_0)\approx 3.31\\
                             p_2&=g(p_1)\approx 3.46
@@ -353,7 +357,7 @@
                         \leq \left(\cfrac{10}{27}\right)^N\cdot 0.5
                         \leq 10^{-5}
                         \quad\Rightarrow\quad
-                        N \leq \cfrac{\log\left(0.00002\right)}{\log\left(10/27\right)}\approx 10.89 \]
+                        N \geq \cfrac{\log\left(0.00002\right)}{\log\left(10/27\right)}\approx 10.89 \]
                         Pick $N=11$.
                         </div>
                     </li>
@@ -366,31 +370,14 @@
                             \frac{5}{3.5^3}+3-3.5}\]
                         \[\frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\frac{9}{98}\smaller10^{-5}
                             \quad\Rightarrow\quad
-                        N \leq 9.65295\]       
+                        N \geq 9.65295\]       
                         </div>
                         Pick $N=10$.
                     </li>
                 </ul>
-                <hr>
-                (Exact solution)
-                \[p=1+\frac{1}{3}\sqrt[3]{\frac{189-81\sqrt{5}}{2}}+\sqrt[3]{\frac{7+3\sqrt{5}}{2}}\]
-                For $N=10$,
-                \[p_{10}=g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(g\left(3.5\right)\right)\right)\right)\right)\right)\right)\right)\right)\right)\]
-                the error
-                \[\left|p_{10}-p\right| \approx 6.5244083025\times10^{−8}\]
             </div>
         </ol>
     </li>
 </ol>
-<script after type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']]
-      },
-      "HTML-CSS": {
-    fonts: ["Latin-Modern"]
-  }
-      });
-    </script>
 </body>
 
