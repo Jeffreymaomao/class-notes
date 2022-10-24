@@ -95,7 +95,7 @@
             By Alternative series test, the partial sum $4P_n$ approximates $\pi$ with error bounded by
             \[\begin{aligned}
             \abs{4P_n-\pi} 
-            & \leq \abs{4P_{n} - 4P_{n+1}}  = \abs{4a_{n}} = \frac{4}{2(n+1)-1} = \frac{4}{2n+1}
+            & \leq \abs{4P_{n} - 4P_{n+1}}  = \abs{4a_{n+1}} = \frac{4}{2(n+1)-1} = \frac{4}{2n+1}
             \end{aligned}\]
             When $n\geq 2000$
             \[\frac{4}{2n+1}\leq \frac{4}{4001} \smaller \frac{4}{4000} = 0.001.\]
@@ -104,13 +104,15 @@
             <br>
             <span style="color:red">
                 <ul>
+                   <li>( 如果直接求解 $n=10,20$ 的 2 分 )
+                    </li>
                     <li>將$x=1$帶入寫出$P_n(1)$的 2 分
                     </li>
-                    <li>寫出估計無窮級數方法的 5 分( 如果直接求解 $n=10,20$ 的 2 分 )
+                    <li>寫出估計無窮級數方法的 5 分
                     </li>
-                    <li>計算過程 8 分
+                    <li>計算過程 0 ~ 8 分
                     </li>
-                    <li>寫出能夠使$\abs{4P_{n} - \pi}\smaller 0.001$ 的 5 分
+                    <li>找到一個數 $N$ 使得 $n\geq N$ 時，有$\abs{4P_{n} - \pi}\smaller 0.001$，5 分
                     </li>
                 </ul>
             </span>
@@ -134,7 +136,7 @@
             \[\lim_{n\to\infty}\frac{\abs{p_{n+1}-p}}{\abs{p_n-p}^{\alpha}}=\lambda.\]
             Let $p_n$ be $p_n=a^{-2022^n}$, where constant $a>0$
             \[\lim_{n\to\infty}\frac{\left|a^{-2022^{n+1}}\ \right|}{\abs{a^{-2022^n}}^{\alpha}}
-            =\lim_{n\to\infty}\frac{\abs{a^{-2022^{n}\times2022}}}{\abs{a^{-2022^n}}^{\alpha}}\color{red}{\quad\rm (5pts)}\]
+            =\lim_{n\to\infty}\frac{\abs{a^{-2022^{n}\times2022}}}{\abs{a^{-2022^n}}^{\alpha}}\]
             Taking $\alpha=2022$, the limitation become
             \[\lim_{n\to\infty}\frac{\abs{a^{-2022^{n}\times2022}}}{\abs{a^{-2022^n}}^{2022}}
             \lim_{n\to\infty}\frac{\abs{a^{-2022^{n}}}^{2022}}{\abs{a^{-2022^n}}^{2022}}
@@ -184,9 +186,9 @@
             <ul>
                 <li>寫出牛頓法 / 割線法公式 2 分
                 </li>
-                <li>計算\(p_n\) 6 分
+                <li>計算\(p_n\) 7 分
                 </li>
-                <li>核對誤差 2 分
+                <li>核對誤差 1 分
                 </li>
             </ul>
         </span>
@@ -229,7 +231,7 @@
             \\[2ex]
             &=1-\frac{\left(mq(p)+0\right)\left(mq(p)+0\right)-\left(m\cdot 0\cdot q(p)\right)\left((m+1)q'(p)+0\right)}{\left(mq(p)+0\right)^2}
             \\[2ex]
-            &=1-\frac{\left(mq(p)\right)^2}{\left(mq(p)\right)^2}=0\color{red}{\quad\rm (5pts)}
+            &=1-\frac{\left(mq(p)\right)^2}{\left(mq(p)\right)^2}=0\color{red}{\quad\rm (4pts)}
             \end{aligned}\]
     </div>
     </li>
@@ -301,14 +303,14 @@
                         <div class="sol">
                             $g'(x)$ exists except $x=0$,
                             \[g'(x)=-\frac{10}{x^3}.\]
-                            For $x>0$,
+                            For $x\in [3,4]$,
                             \[\abs{g'(x)}
                             =\abs{\frac{10}{x^3}}
                             \leq
                             \abs{\frac{10}{3^3}}
                             \smaller 1\color{red}{\quad\rm (5pts)}\]
                             Let $k=\cfrac{10}{3^3}\color{red}{\quad\rm (5pts)}$ we have
-                            \[\abs{g'(x)}\leq k \smaller 1, \quad 0\smaller k\smaller 1.\]
+                            \[\text{for } x\in [3,4],\quad \abs{g'(x)}\leq k \smaller 1, \quad 0\smaller k\smaller 1.\]
                         </div>
                 </ol>
             </li>
@@ -343,7 +345,7 @@
             <li>PART II.
                 (10pts) Estimate the number of iterations $N$ necessary to obtain approximations accurate to within $10^{-5}$.
                 <br>
-                [$\textit{Hint: }$use $\abs{p_n-p}\leq k^N\max\{p_0-a,b-p_0\}$ or $\abs{p_n-p}\leq \cfrac{k^N}{1-k}\abs{p_1-p_0}$]
+                [$\textit{Hint: }$use $\abs{p_n-p}\leq k^n\max\{p_0-a,b-p_0\}$ or $\abs{p_n-p}\leq \cfrac{k^n}{1-k}\abs{p_1-p_0}$]
             </li>
             <div class="sol">
                 (Here pick $p_0=3.5$)
@@ -354,8 +356,8 @@
                 </span>
                 <ul>
                     <li>Method 1
-                        \[\abs{p_n-p}\leq k^N\max\{3.5-3,4-3.5\}\]
-                        \[\abs{p_n-p}
+                        \[\abs{p_N-p}\leq k^N\max\{3.5-3,4-3.5\}\]
+                        \[\abs{p_N-p}
                         \leq \left(\cfrac{10}{27}\right)^N\cdot 0.5
                         \leq 10^{-5}
                         \quad\Rightarrow\quad
@@ -363,8 +365,8 @@
                         Pick $N=11$.
                     </li>
                     <li>Method 2
-                        \[\abs{p_n-p}\leq \cfrac{k^N}{1-k}\abs{g(3.5)-3.5}\]
-                        \[\abs{p_n-p}\leq \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{g(3.5)-3.5}
+                        \[\abs{p_N-p}\leq \cfrac{k^N}{1-k}\abs{g(3.5)-3.5}\]
+                        \[\abs{p_N-p}\leq \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{g(3.5)-3.5}
                         =
                         \frac{\left(\frac{10}{27}\right)^N}{1-\left(\frac{10}{27}\right)}\abs{
                             \frac{5}{3.5^3}+3-3.5}\]
