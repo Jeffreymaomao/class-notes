@@ -1,0 +1,132 @@
+*{
+    position: relative;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #1b1b1b;
+}
+
+html, body, main{
+    overflow: hidden;
+}
+
+input,ul,li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+#sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: auto;
+    width: auto;
+    z-index: 100;
+
+    border-radius: 0 0 10px 0;
+    transition: 0.1s;
+}
+
+.list-item{
+    display: block;
+}
+
+.button-container{
+    display: block; 
+    padding: 10px;
+}
+
+.button{
+    text-align: center;
+    background-color: #fff;
+    display: block;   
+    min-width: 100px;
+    border-radius: 10px;
+
+    padding: 10px;
+
+    box-shadow: 0px 0px 4px inset black;
+    font-family: "Times";
+
+    cursor: pointer;
+}
+
+
+#expression{
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    width: 50%;
+    height: 100vh;
+    padding: 5%;
+
+    font-family: "Times";
+    font-size: 12pt; 
+    line-height: 26px;
+
+    overflow-y: scroll;
+
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.katex { 
+    line-height: 25px;
+    font-size: 12pt; 
+}
+
+.box{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+body.light-mode #expression{
+    background-color: white;
+    color: black;
+}
+body.light-mode .box{
+    border: 1px solid black;
+}
+
+#theme-toggle{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+
+    background-color: #ddd;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

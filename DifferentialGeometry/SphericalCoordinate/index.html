@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Spherical Coordinate </title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/katex.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="css/katex.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="sidebar">
+        <div class="container">
+            <ul>
+                <li class="list-item">
+                    <div class="button-container">
+                        <label class="button">
+                            <input id="S1" type="checkbox"/>
+                            <span class="latex">
+                                X_1 : \mathcal{U} \to S^2 
+                            </span>
+                        </label>
+                    </div>
+                </li>
+                <li class="list-item">
+                    <div class="button-container">
+                        <label class="button">
+                            <input id="S2" type="checkbox"/>
+                            <span class="latex">
+                                
+                            X_2 : \mathcal{U} \to S^2
+                            </span>
+                        </label>
+                    </div>
+                </li>
+                <li class="list-item">
+                    <div class="button-container">
+                        <label class="button">
+                            <input id="animate" type="checkbox"/> animate 
+                        </label>
+                    </div>
+                </li>
+                <li class="list-item">
+                    <div class="button-container">
+                        <label class="button">
+                            <input id="outline" checked="true" type="checkbox"/> outline 
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <main>
+    </main>
+
+    <div id="expression">
+        We need to show the sphere 
+        <span class="Latex">
+            S^2 = \{(x,y,z)\in \R^3; x^2+y^2+z^2 = 1\}
+        </span>
+        is a regular sphere.
+        <div class="box">
+        Let <span class="latex">\mathcal{U} = \{ (\varphi,\theta); 0 < \varphi < \pi, 0 < \theta < 2\pi\}</span> and let <span class="latex">X_1 : \mathcal{U}\subset \R^2 \to \R^3</span> be given by 
+        <span class="Latex">
+            X_1(\varphi,\theta) = 
+            \begin{pmatrix}
+            \sin\varphi \cos\theta\\
+            \sin\varphi \sin\theta\\
+            \cos\varphi
+            \end{pmatrix}.
+        </span>
+        We may click the first <span class="latex"> X_1 </span> button to see that it covers the <span class="latex"> S^2 </span> minus the red line, where the parameterization of red line <span class="latex"> \alpha(\varphi) </span> is given by 
+        <span class="Latex"> 
+        \alpha(\varphi) = \left(\sin\varphi, 0, \cos\varphi\right),
+        </span>
+        which is at <span class="latex"> \theta=0 </span> and <span class="latex"> 0 < \varphi < \pi </span>.
+
+
+
+        </div>
+        Therefore, we need another parameterization.
+
+        <div class="box">
+            We still continue using <span class="latex">\mathcal{U} = \{ (\varphi,\theta); 0 < \varphi < \pi, 0 < \theta < 2\pi\}</span> and let <span class="latex">X_2 : \mathcal{U}\subset \R^2 \to \R^3</span> be given by 
+            <span class="Latex">
+                X_2(\varphi,\theta) = 
+                \begin{pmatrix}
+                -\sin\varphi \cos\theta\\
+                \cos\varphi\\
+                \sin\varphi \sin\theta
+                \end{pmatrix}.
+            </span>
+
+            We may click the first <span class="latex"> X_2 </span> button to see that it covers the <span class="latex"> S^2 </span> minus the blue line, where the parameterization of blue line <span class="latex"> \beta(\varphi) </span> is given by 
+            <span class="Latex"> 
+            \beta(\varphi) = \left(-\sin\varphi, \cos\varphi, 0\right),
+            </span>
+            which is at <span class="latex"> \theta=0 </span> and <span class="latex"> 0 < \varphi < \pi </span>.
+        </div>
+
+        <button id="theme-toggle">dark / light mode</button>
+        <script>
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                if(document.body.classList.value.includes("light-mode")){
+                    config.mode = "light-mode"; 
+                }else{
+                    config.mode = "dark-mode"; 
+                }
+            });
+        </script>
+    </div>
+    
+</body>
+</html>
