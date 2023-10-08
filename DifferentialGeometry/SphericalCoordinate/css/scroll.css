@@ -1,0 +1,48 @@
+section.scroll{
+	display: grid;
+	place-items: center;
+	align-content: center;
+	
+	min-height: 100vh
+}
+
+.hidden{
+	opacity: 0;
+	filter: blur(5px);
+	transition: all 0.5s;
+}
+
+.show{
+	filter: blur(0px);
+	opacity: 1;
+}
+
+
+#expression, .katex{
+    font-size: 18pt; 
+    line-height: 50px;
+}
+
+.button, .button .katex{
+	font-size: 12pt; 
+    line-height: 25px;
+}
+
+/* --------  */
+#expression{
+	scroll-snap-type: y mandatory;
+}
+
+section.scroll{
+	scroll-snap-align: start;
+}
+
+
+
+
+
+
+
+
+
+

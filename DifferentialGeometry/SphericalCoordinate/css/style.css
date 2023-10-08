@@ -19,13 +19,16 @@ input,ul,li{
     margin: 0;
 }
 
+.button input{
+}
+
 
 #sidebar{
     position: fixed;
     left: 0;
     top: 0;
     height: auto;
-    width: auto;
+    width: 12%;
     z-index: 100;
 
     border-radius: 0 0 10px 0;
@@ -41,19 +44,22 @@ input,ul,li{
     padding: 10px;
 }
 
-.button{
+.button-container .button{
     text-align: center;
-    background-color: #fff;
     display: block;   
-    min-width: 100px;
-    border-radius: 10px;
-
-    padding: 10px;
-
-    box-shadow: 0px 0px 4px inset black;
-    font-family: "Times";
+    width: 100%;
+    padding: 5%;
 
     cursor: pointer;
+
+    font-family: "Times";
+}
+
+.button{  
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px inset #999;
+    background-color: #555;
+    color: white;
 }
 
 
@@ -64,16 +70,18 @@ input,ul,li{
 
     width: 50%;
     height: 100vh;
-    padding: 5%;
+    padding: 0% 5%;
 
     font-family: "Times";
-    font-size: 12pt; 
-    line-height: 26px;
+    
 
     overflow-y: scroll;
 
     background-color: #1b1b1b;
     color: white;
+
+    font-size: 12pt; 
+    line-height: 26px;
 }
 
 .katex { 
@@ -84,7 +92,6 @@ input,ul,li{
 .box{
     border: 1px solid white;
     padding: 10px;
-    margin: 10px 0px;
     border-radius: 10px;
 }
 
@@ -101,12 +108,22 @@ body.light-mode .box{
     top: 20px;
     right: 20px;
 
-    width: 150px;
+    width: auto;
     height: 40px;
-    border-radius: 10px;
+    padding: 2px 20px;
 
-    background-color: #ddd;
+    cursor: pointer;
 
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover{
+    opacity: 1.0;
+}
+
+section{
+    margin: 30px 0px 0px 0px;
 }
 
 

@@ -128,6 +128,20 @@ function axis(length){
     translate(0, 0, -length);
 }
 
+function mouseHover(){
+    const left = config.canvas.elt.clientLeft;
+    const right = config.canvas.elt.clientWidth + left;
+    const top = config.canvas.elt.clientTop;
+    const bottom = config.canvas.elt.clientHeight + top;
+
+    return (
+        winMouseX >= left &&
+        winMouseY >= top &&
+        winMouseX <= right &&
+        winMouseY <= bottom
+    );
+}
+
 function draw() {
     // background color
     if(config.mode=="light-mode"){
@@ -135,9 +149,14 @@ function draw() {
     }else{
         background(0);
     }
-    orbitControl(2,2, 0.3);
-    rotateX(HALF_PI);
 
+    if(mouseHover()){
+        orbitControl(2,2, 0.3);
+    }else{
+        orbitControl(2,2, 0.0);
+    }
+    
+    rotateX(HALF_PI);
     // better look
     rotateZ(animateTheta);
     if(config.value.animate){
