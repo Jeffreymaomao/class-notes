@@ -1,0 +1,52 @@
+@media(max-width: 470px){
+	#expression{
+		top: 50%;
+		left: 0;
+		width: 100vw;
+		height: 50vh;
+	}
+
+	section.scroll{
+		min-height: 50vh;
+	}
+
+
+	#expression, .katex{
+	    font-size: 11pt; 
+	    line-height: 25px;
+	}
+	.button, .button .katex{
+		font-size: 11pt; 
+	    line-height: 25px;
+	}
+
+	/* -----  */
+	#sidebar{
+		position: fixed;
+		top: calc(50% - 60px);
+		width: 100vw;
+	}
+	#sidebar .container,
+	#sidebar ul{
+		overflow-x: scroll;
+		white-space: nowrap;
+	}
+	#sidebar .list-item{
+		vertical-align: middle;
+		display: inline-block;
+	}
+	#sidebar .button-container{
+	}
+	#sidebar .button{
+		padding: 5px;
+		width: 120px;
+		width: 200px;
+	}
+	/*----*/
+	#theme-toggle{
+		top: calc(50% + 5px);
+		padding: 0px 10px;
+		height: 30px;
+
+	}
+}

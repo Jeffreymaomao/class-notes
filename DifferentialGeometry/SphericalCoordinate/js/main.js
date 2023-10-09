@@ -53,14 +53,20 @@ document.addEventListener("DOMContentLoaded",()=>{
     }else{
         config.mode = "dark-mode"; 
     }
-
 })
 
 
 function windowResized() {
+    if(windowWidth<470){
+        config.ratio.x = 1.0;
+        config.ratio.y = 0.5;
+    }else{
+        config.ratio.x = 0.5;
+        config.ratio.y = 1.0;
+    }
     resizeCanvas(
-        windowWidth*config.ratio.x, 
-        windowHeight*config.ratio.y
+        windowWidth * config.ratio.x, 
+        windowHeight * config.ratio.y
     );
     camera(0, -150, 500, 0, 0, 0, 0, 1, 0);
 }
@@ -71,6 +77,14 @@ function preload() {
 
 function setup() {
     frameRate(60);
+
+    // RWD
+    if(windowWidth<470){
+        config.ratio.x = 1.0;
+        config.ratio.y = 0.5;
+    }
+
+
     config.canvas = createCanvas(
         windowWidth*config.ratio.x, 
         windowHeight*config.ratio.y,

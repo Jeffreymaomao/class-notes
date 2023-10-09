@@ -31,10 +31,13 @@ section.scroll{
 /* --------  */
 #expression{
 	scroll-snap-type: y mandatory;
+	scroll-padding: 5%;
 }
 
 section.scroll{
+	overflow-y: scroll;
 	scroll-snap-align: start;
+	padding: 0px 0px 20px 0px;
 }
 
 
