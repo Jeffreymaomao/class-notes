@@ -62,6 +62,7 @@ function windowResized() {
         windowWidth*config.ratio.x, 
         windowHeight*config.ratio.y
     );
+    camera(0, -150, 500, 0, 0, 0, 0, 1, 0);
 }
 
 function preload() {
