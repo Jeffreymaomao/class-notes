@@ -38,5 +38,6 @@ const config = {
     ],
     "others": [
         "Calculus-2023-mid-pratice.pdf",
+        "Calculus-2023-final-solution.pdf",
     ]
 }
