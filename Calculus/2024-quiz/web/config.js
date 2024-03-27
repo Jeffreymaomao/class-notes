@@ -1,16 +1,16 @@
 const config = {
     "quizs": [
         "Calculus-2024-quiz0.pdf",
-        // "Calculus-2024-quiz0-solution.pdf",
+        "Calculus-2024-quiz0-solution.pdf",
 
         "Calculus-2024-quiz1.pdf",
-        // "Calculus-2024-quiz1-solution.pdf",
+        "Calculus-2024-quiz1-solution.pdf",
 
         "Calculus-2024-quiz2.pdf",
-        // "Calculus-2024-quiz2-solution.pdf",
+        "Calculus-2024-quiz2-solution.pdf",
 
         "Calculus-2024-quiz3.pdf",
-        // "Calculus-2024-quiz3-solution.pdf",
+        "Calculus-2024-quiz3-solution.pdf",
 
         // "Calculus-2024-quiz4.pdf",
         // "Calculus-2024-quiz4-solution.pdf",
