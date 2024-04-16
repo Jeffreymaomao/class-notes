@@ -12,7 +12,7 @@ const config = {
         "Calculus-2024-quiz3.pdf",
         "Calculus-2024-quiz3-solution.pdf",
 
-        // "Calculus-2024-quiz4.pdf",
+        "Calculus-2024-quiz4.pdf",
         // "Calculus-2024-quiz4-solution.pdf",
 
         // "Calculus-2024-quiz5.pdf",
