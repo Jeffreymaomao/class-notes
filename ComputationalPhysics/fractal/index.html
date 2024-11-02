@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="mathquill-0.10.1/mathquill.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="mathquill-0.10.1/mathquill.js"></script>
+    <script src="js/Math.js"></script>
+    <title>Pixel Manipulation</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        <ul id="sidebar-list">
+            <li>
+                <p class='informartion'>
+                    number of interation
+                </p>
+                <div class="value mq-math-mode">
+                    <var>n</var>
+                    <span class="mq-binary-operator">=</span>
+                    <span id="inter_number" class='mq-math-mode'>2</span>
+                </div>
+                <input id='inter_slider' class="slider" type="range" min="0" max="50" value="2">
+            </li>
+            <li>
+                <p class='informartion'>
+                    scale the maximum resolution
+                </p>
+                <div class="value mq-math-mode">
+                    <span class="mq-math-mode">scale</span>
+                    <span class="mq-binary-operator">=</span>
+                    <span id='scale_number' class='mq-math-mode'>0.3</span>
+                </div>
+                <input id='scale_slider' class="slider" type="range" min="0" max="1.2" value="0.5" step="0.01">
+            </li>
+            <li>
+            </li>
+        </ul>
+    </div>
+    <canvas id='app'></canvas>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
